@@ -1,39 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf-8" />
-        <title >template_basic</title>
-    </head>
-    <body>
-        <div class="body">
-            <div class="header">
-                <header>
 
-                </header>
-            </div>
-            <div class="content">
-                <div class="sidebar">
-                    <s
+<head>
+    <meta charset="utf-8" />
+    {% block title %}
+    {% endblock %}
+    <link rel="stylesheet" href="../config/style_basic.css" />
+</head>
 
-                </div>
-                <div class="article">
-                    <article>
+<body>
+    <div class="body">
+        <div class="header">
+            <header>
+                <p>MUSIC APP -> </p>
+                {% block header %}{% endblock %}
 
-                    </article>
-                </div>
-                <div class="nav">
-                    <nav>
-
-                    </nav>
-                </div>
-
-            </div>
-            <div class ="footer">
-                <footer>
-
-                </footer>
-            </div>
+            </header>
         </div>
+        <div class="content">
+            <div class="aside">
+                <aside>
+                    {% block aside %}{% endblock %}
 
-    </body>
+                </aside>
+
+            </div>
+            <div class="main">
+                <main>
+                    {% block main %}{% endblock %}
+
+                </main>
+            </div>
+            <div class="nav">
+                <nav>
+                    {% block nav %}{% endblock %}
+
+
+                </nav>
+            </div>
+
+        </div>
+        <div class="footer">
+            <footer>
+                <!-- standard error azeige  -->
+                {% block footer %}{% endblock %}
+                {% if ERROR %}
+                <p>MESSAGE: {{ ERROR | e }}</p>
+                {% endif %}
+
+            </footer>
+        </div>
+    </div>
+
+</body>
+
 </html>

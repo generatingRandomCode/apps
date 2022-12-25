@@ -1,0 +1,43 @@
+{% extends "template_basic.html"  %}
+{% block title %}
+	<title>homepage</title>
+{% endblock %}
+{% block header %}
+	<p>HOMEPAGE</p>
+	<br/>
+	{{ post | e }}
+{% endblock %}
+{% block aside %}
+	<div>
+		<form method="post">
+			<label for="song_name">song name:</label>
+			<input type="text" id="song_name" name="name" required/>
+			<br/>
+			<label for="submit_button">submit</label>
+			<input type="submit" id="submit_button"/>
+		</form>
+	</div>
+{% endblock %}
+
+{% block main %}
+	<table>
+    <caption>music in music database</caption>
+		<thead>
+			<tr>
+				<th>id</th>
+				<th>name</th>
+				<th>played</th>
+			</tr>
+		</thead>
+		<tbody>
+			{%  for music in music_db %}
+				<tr>
+					<td>{{ music.music_id | e }}</td>
+					<td>{{ music.music_name | e }}</td>
+					<td>{{ music.played | e }}</td>
+					<tr/>
+				{% endfor %}
+			</tbody>
+		</tbody>
+	</table>
+{% endblock %}
